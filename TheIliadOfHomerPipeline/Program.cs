@@ -68,5 +68,16 @@ static class Program
             Console.WriteLine("Found reversed words {0}/{1}",
                reversedWord, new string(reversedWord.Reverse().ToArray()));
         });
+
+        //
+        // Connect the dataflow blocks to form a pipeline.
+        //
+
+        var linkOptions = new DataflowLinkOptions { PropagateCompletion = true };
+
+        downloadString.LinkTo(createWordList, linkOptions);
+        createWordList.LinkTo(filterWordList, linkOptions);
+        filterWordList.LinkTo(findReversedWords, linkOptions);
+        findReversedWords.LinkTo(printReversedWords, linkOptions);
     }
 }
