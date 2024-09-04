@@ -79,5 +79,8 @@ static class Program
         createWordList.LinkTo(filterWordList, linkOptions);
         filterWordList.LinkTo(findReversedWords, linkOptions);
         findReversedWords.LinkTo(printReversedWords, linkOptions);
+
+        // Process "The Iliad of Homer" by Homer.
+        downloadString.Post("http://www.gutenberg.org/cache/epub/16452/pg16452.txt");
     }
 }
