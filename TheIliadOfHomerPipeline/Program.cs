@@ -82,5 +82,10 @@ static class Program
 
         // Process "The Iliad of Homer" by Homer.
         downloadString.Post("http://www.gutenberg.org/cache/epub/16452/pg16452.txt");
+
+        // Mark the head of the pipeline as complete.
+        downloadString.Complete();
+
+
     }
 }
