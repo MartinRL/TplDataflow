@@ -86,6 +86,7 @@ static class Program
         // Mark the head of the pipeline as complete.
         downloadString.Complete();
 
-
+        // Wait for the last block in the pipeline to process all messages.
+        printReversedWords.Completion.Wait();
     }
 }
