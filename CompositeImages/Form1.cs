@@ -139,7 +139,7 @@ public partial class Form1 : Form
     // Loads all bitmap files that exist at the provided path.
     IEnumerable<Bitmap> LoadBitmaps(string path)
     {
-        List<Bitmap> bitmaps = new List<Bitmap>();
+        List<Bitmap> bitmaps = [];
 
         // Load a variety of image types.
         foreach (string bitmapType in
