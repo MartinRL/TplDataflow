@@ -107,10 +107,7 @@ partial class Form1
     {
         // Create a FolderBrowserDialog object to enable the user to
         // select a folder.
-        FolderBrowserDialog dlg = new FolderBrowserDialog
-        {
-            ShowNewFolderButton = false
-        };
+        FolderBrowserDialog dlg = new() { ShowNewFolderButton = false };
 
         // Set the selected path to the common Sample Pictures folder
         // if it exists.
