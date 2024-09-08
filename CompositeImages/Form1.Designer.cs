@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks.Dataflow;
+using static System.Environment;
 
 namespace CompositeImages;
 
@@ -111,9 +112,7 @@ partial class Form1
 
         // Set the selected path to the common Sample Pictures folder
         // if it exists.
-        string initialDirectory = Path.Combine(
-           Environment.GetFolderPath(Environment.SpecialFolder.CommonPictures),
-           "Sample Pictures");
+        string initialDirectory = Path.Combine(GetFolderPath(SpecialFolder.CommonPictures), "Sample Pictures");
         if (Directory.Exists(initialDirectory))
         {
             dlg.SelectedPath = initialDirectory;
