@@ -142,8 +142,7 @@ public partial class Form1 : Form
         List<Bitmap> bitmaps = [];
 
         // Load a variety of image types.
-        foreach (string bitmapType in
-           new string[] { "*.bmp", "*.gif", "*.jpg", "*.png", "*.tif" })
+        foreach (string bitmapType in new [] { "*.bmp", "*.gif", "*.jpg", "*.png", "*.tif" })
         {
             // Load each bitmap for the current extension.
             foreach (string fileName in Directory.GetFiles(path, bitmapType))
