@@ -1,4 +1,6 @@
-﻿namespace CompositeImages;
+﻿using System.Threading.Tasks.Dataflow;
+
+namespace CompositeImages;
 
 partial class Form1
 {
@@ -55,6 +57,7 @@ partial class Form1
         toolStripButton1.Name = "toolStripButton1";
         toolStripButton1.Size = new Size(131, 29);
         toolStripButton1.Text = "Choose Folder";
+        toolStripButton1.Click += new EventHandler(toolStripButton1_Click);
         // 
         // toolStripButton2
         // 
@@ -65,6 +68,7 @@ partial class Form1
         toolStripButton2.Name = "toolStripButton2";
         toolStripButton2.Size = new Size(67, 29);
         toolStripButton2.Text = "Cancel";
+        toolStripButton2.Click += new EventHandler(toolStripButton2_Click);
         // 
         // pictureBox1
         // 
@@ -97,4 +101,54 @@ partial class Form1
     private ToolStripButton toolStripButton1;
     private ToolStripButton toolStripButton2;
     private PictureBox pictureBox1;
+
+    // Event handler for the Choose Folder button.
+    private void toolStripButton1_Click(object sender, EventArgs e)
+    {
+        // Create a FolderBrowserDialog object to enable the user to
+        // select a folder.
+        FolderBrowserDialog dlg = new FolderBrowserDialog
+        {
+            ShowNewFolderButton = false
+        };
+
+        // Set the selected path to the common Sample Pictures folder
+        // if it exists.
+        string initialDirectory = Path.Combine(
+           Environment.GetFolderPath(Environment.SpecialFolder.CommonPictures),
+           "Sample Pictures");
+        if (Directory.Exists(initialDirectory))
+        {
+            dlg.SelectedPath = initialDirectory;
+        }
+
+        // Show the dialog and process the dataflow network.
+        if (dlg.ShowDialog() == DialogResult.OK)
+        {
+            // Create a new CancellationTokenSource object to enable
+            // cancellation.
+            cancellationTokenSource = new CancellationTokenSource();
+
+            // Create the image processing network if needed.
+            headBlock ??= CreateImageProcessingNetwork();
+
+            // Post the selected path to the network.
+            headBlock.Post(dlg.SelectedPath);
+
+            // Enable the Cancel button and disable the Choose Folder button.
+            toolStripButton1.Enabled = false;
+            toolStripButton2.Enabled = true;
+
+            // Show a wait cursor.
+            Cursor = Cursors.WaitCursor;
+        }
+    }
+
+    // Event handler for the Cancel button.
+    private void toolStripButton2_Click(object sender, EventArgs e)
+    {
+        // Signal the request for cancellation. The current component of
+        // the dataflow network will respond to the cancellation request.
+        cancellationTokenSource.Cancel();
+    }
 }
