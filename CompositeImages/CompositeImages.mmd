@@ -1,16 +1,17 @@
 flowchart LR
+    lB("‡ Transform Block\nLoad Bitmaps")
+    cCB("‡ Transform Block\nCreate Composite Bitmap")
+    dCB("◊ Action Block\nDisplay Composite Bitmap")
+    oC("◊ Action Block\nOperation Cancelled")
 
-    lB("‡ Transform Block 
-    Load Bitmaps")
+    subgraph main[ ]
+        lB
+        cCB
+        dCB
+    end
 
-    cCB("‡ Transform Block 
-    Create Composite Bitmap")
+    lB -.-> cCB
+    cCB -.-> dCB
+    cCB -.-> oC
 
-    dCB("◊ Action Block 
-    Display Composite Bitmap")
-
-    oC("◊ Action Block 
-    Operation Cancelled")
-
-    lB .-> cCB .-> dCB
-    cCB .-> oC
+    style main fill:none,stroke:none
