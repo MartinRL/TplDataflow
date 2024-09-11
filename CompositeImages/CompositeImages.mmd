@@ -20,4 +20,8 @@ flowchart LR
     dCB("◊ Action Block 
     Display Composite Bitmap")
 
+    oC("◊ Action Block 
+    Operation Cancelled")
+
     lB .-> cCB .-> dCB
+    cCB .-> oC
