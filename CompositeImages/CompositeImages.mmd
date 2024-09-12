@@ -14,20 +14,4 @@ flowchart LR
     cCB -.-> dCB
     cCB -.-> oC
 
-    %% Execution
-    AB("◊ ActionBlock<T>")
-    TB("‡ TransformBlock<T, U")
-    TMB("⊕ TransformManyBlock<TInput,TOutput>")
-
-    %% Grouping
-    BaB("⌗ BatchBlock<T>")
-    JB("⊛ JoinBlock<T1, T2>")
-    BJB("⟟ BatchedJoinBlock<T1, T2>")
-
-    %% Buffer
-    BB("⧉ BufferBlock<T>")
-    BrB("⊛ BroadcastBlock<T>")
-    WOB("⨀ WriteOnceBlock<T>")
-
-
     style main fill:none,stroke:none
