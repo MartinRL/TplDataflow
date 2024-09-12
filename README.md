@@ -1,2 +1,5 @@
-# TplDataflow
-TPL Dataflow playground
+# Experiments in TPL Dataflow
+
+```mermaid
+
+```
