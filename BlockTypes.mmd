@@ -1,21 +1,21 @@
 flowchart LR
-    %% subgraph [ ]
+    subgraph Execution
         %% direction TD
         AB("◊ ActionBlock<T>")
         TB("‡ TransformBlock<T, U>")
         TMB("⊕ TransformManyBlock<TInput, TOutput>")
-    %% end
+    end
     
-    %% subgraph [ ]
+    subgraph Grouping
         %% direction TD
         BaB("⌗ BatchBlock<T>")
         JB("⊛ JoinBlock<T1, T2>")
         BJB("⟟ BatchedJoinBlock<T1, T2>")
-    %% end
+    end
     
-    %% subgraph [ ]
+    subgraph Buffer
         %% direction TD
         BB("⧉ BufferBlock<T>")
         BrB("⊛ BroadcastBlock<T>")
         WOB("⨀ WriteOnceBlock<T>")
-    %% end
+    end
