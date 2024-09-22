@@ -6,8 +6,8 @@ flowchart LR
     dS("‡ TransformBlock<string, string>\ndownloadString"):::green
     cWL("‡ TransformBlock<string, string[]>\ncreateWordList"):::green
     fWL("‡ TransformBlock<string[], string[]>\nfilterWordList"):::green
-    fWL("‡ fRWTransformManyBlock<string[], string>\nfindReversedWords"):::green
-    pRW("‡ ActionBlock<string>\nprintReversedWords"):::green
+    fRW("‡ fRWTransformManyBlock<string[], string>\nfindReversedWords"):::green
+    pRW("◊ ActionBlock<string>\nprintReversedWords"):::green
 
-    
+    dS -.-> cWL -.-> fWL -.-> fRW -.-> pRW
     
