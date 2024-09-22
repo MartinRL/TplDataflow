@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks.Dataflow;
+using static System.Net.DecompressionMethods;
+using static System.StringSplitOptions;
 
 // Demonstrates how to create a basic dataflow pipeline.
 // This program downloads the book "The Iliad of Homer" by Homer from the Web
@@ -20,7 +19,7 @@ static class Program
         {
             Console.WriteLine("Downloading '{0}'...", uri);
 
-            return await new HttpClient(new HttpClientHandler { AutomaticDecompression = System.Net.DecompressionMethods.GZip }).GetStringAsync(uri);
+            return await new HttpClient(new HttpClientHandler { AutomaticDecompression = GZip }).GetStringAsync(uri);
         });
 
         // Separates the specified text into an array of words.
@@ -34,7 +33,7 @@ static class Program
             text = new string(tokens);
 
             // Separate the text into an array of words.
-            return text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            return text.Split(new[] { ' ' }, RemoveEmptyEntries);
         });
 
         // Removes short words and duplicates.
