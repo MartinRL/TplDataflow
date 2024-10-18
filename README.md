@@ -25,7 +25,7 @@ flowchart TB
         BaB("⌗ BatchBlock<T>"):::blue
         JB("⊛ JoinBlock<T1, T2>"):::blue
         BJB("⟟ BatchedJoinBlock<T1, T2>"):::blue
-        groupingNote("combine data from one or more sources \nand under various constraints"):::light-yellow
+        groupingNote("combine data from one or more sources and under various constraints"):::light-yellow
     end
 
     subgraph "Execution Blocks"
@@ -33,7 +33,7 @@ flowchart TB
         AB("◊ ActionBlock<T>"):::green
         TB("‡ TransformBlock<T, U>"):::green
         TMB("⊕ TransformManyBlock<TInput, TOutput>"):::green
-        executiongNote("call a user provided delegate for \neach piece of received data"):::light-yellow
+        executiongNote("call a user provided delegate for each piece of received data"):::light-yellow
     end
 ```
 
